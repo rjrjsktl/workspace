@@ -1,0 +1,8 @@
+package edu.kh.jsp.controller;
+
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/signUp")
+public class signUp extends HttpServlet {
+
+}
