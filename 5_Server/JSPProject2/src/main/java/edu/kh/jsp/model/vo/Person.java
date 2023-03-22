@@ -1,22 +1,22 @@
 package edu.kh.jsp.model.vo;
 
 public class Person {
-
+	
+	// 필드
 	private String name;
 	private int age;
 	private String address;
 	
+	// 기본생성자
 	public Person() {}
-	
-	// alt + shift + s + o
+
 	public Person(String name, int age, String address) {
 		super();
 		this.name = name;
 		this.age = age;
 		this.address = address;
-		
 	}
-	// alt + shift + s + r
+
 	public String getName() {
 		return name;
 	}
@@ -37,15 +37,17 @@ public class Person {
 		return address;
 	}
 
+	// getter/setter
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	// alt + shift + s + s
+
 	// Object.toString() 오버라이딩
 	@Override
 	public String toString() {
 		return name + " / " + age + " / " + address;
 	}
+	
+	
 	
 }
