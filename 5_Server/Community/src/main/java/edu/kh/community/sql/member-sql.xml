@@ -11,4 +11,10 @@
 		WHERE MEMBER_EMAIL = ?
 		AND SECESSION_FL = 'N'
 	</entry>
+	
+	<entry key="selectAll">		
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICK
+		FROM MEMBER
+		WHERE SECESSION_FL = 'N'
+	</entry>
 </properties>

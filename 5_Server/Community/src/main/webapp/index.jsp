@@ -65,6 +65,28 @@
 				이메일 : <input type="text" id="in1">
 				<button id="select1">조회</button>
 				<div id="result1"></div>
+				<br> <br> <br> <br> <br> <br> <br>
+
+				<hr>
+				<h3>회원 목록 조회</h3>
+				<br>
+				<p>일정 시간 마다 비동기로 회원 목록(회원 번호, 이메일, 닉네임) 조회</p>
+				<table border="1">
+
+					<thead>
+						<tr>
+							<th>회원 번호</th>
+							<th>이메일</th>
+							<th>닉네임</th>
+						</tr>
+					</thead>
+
+					<tbody id="mbList">
+
+					</tbody>
+
+				</table>
+
 
 			</section>
 
@@ -107,13 +129,15 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-	<!-- main.js 연결 -->
-	<script src="${contextPath}/resources/js/main.js"></script>
 
 	<!-- jQuery 라이브러리 추가 -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
+
+	<!-- main.js 연결 -->
+	<script src="${contextPath}/resources/js/main.js"></script>
+
 
 </body>
 </html>
