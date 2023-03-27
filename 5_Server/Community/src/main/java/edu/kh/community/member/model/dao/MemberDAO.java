@@ -66,6 +66,11 @@ public class MemberDAO {
 		return member;
 	}
 
+	/**
+	 * @param conn
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Member> selectAll(Connection conn) throws Exception {
 
 		// 결과 저장용 변수 선언
@@ -99,5 +104,52 @@ public class MemberDAO {
 		}
 		// 결과반환
 		return mbList;
+	}
+
+	/** 로그인 DAO
+	 * @param conn
+	 * @param mem
+	 * @return
+	 */
+	public Member login(Connection conn, Member mem) throws Exception {
+		
+		// 결과 저장용 변수 선언 (제일 먼저 해야 함)
+		Member loginMember = null;
+		
+		try {
+			// SQL 얻어오기
+			String sql = prop.getProperty("login");
+			
+			// PreparedStatment 생성 및 SQL 적재
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, mem.getMemberEmail());
+			pstmt.setString(2, mem.getMemberPw());
+			
+			// SQL 수행
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				loginMember = new Member();
+				
+				loginMember.setMemberNo(  	   rs.getInt("MEMBER_NO") );
+				loginMember.setMemberEmail(    rs.getString("MEMBER_EMAIL") );
+				loginMember.setMemberNickname( rs.getString("MEMBER_NICK")	 );
+				loginMember.setMemberTel(      rs.getString("MEMBER_TEL") 	 );
+				loginMember.setMemberAddress(  rs.getString("MEMBER_ADDR")  );
+				loginMember.setProfileImage(   rs.getString("PROFILE_IMG")  );
+				loginMember.setEnrollDate(     rs.getString("ENROLL_DT") 	 );
+			}
+			
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		
+		
+		return loginMember; // null 또는 Member 객체 주소
+	
+	
 	}
 }

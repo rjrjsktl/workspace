@@ -31,4 +31,17 @@ public class MemberService {
 		return mbList;
 	}
 
+	public Member login(Member mem) throws Exception {
+		// Connection 얻어오기
+		Connection conn = getConnection();
+		// Dao 수행
+		Member loginMember = dao.login(conn, mem);
+		
+		// Connection 반환
+		close(conn);
+		
+		// 결과 반환
+		return loginMember;
+	}
+
 }

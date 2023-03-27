@@ -92,37 +92,85 @@
 
 			<section class="content-2">
 
-				<form action="#" name="login-frm">
+				<%-- if/else --%>
+				<c:choose>
+					<%-- choose 내부에는 jsp용 주석만 사용 --%>
 
-					<!-- 아이디, 비밀번호, 로그인 버튼 -->
-					<fieldset id="id-pw-area">
-						<section>
-							<input type="text" name="inputId" placeholder="아이디"
-								autocomplete="off">
-							<!-- autocomplete="off" : 자동완성 사용 X -->
+					<%-- 로그인이 되어있지 않은 경우 --%>
+					<c:when test="${ empty sessionScope.loginMember }">
+						<form action="member/login" method="POST" name="login-form"
+							onsubmit="return loginValidate()">
 
-							<input type="password" name="inputPw" placeholder="비밀번호">
-						</section>
+							<!-- 아이디, 비밀번호, 로그인 버튼 -->
+							<fieldset id="id-pw-area">
+								<section>
+									<input type="text" name="inputEmail" placeholder="이메일"
+										autocomplete="off" value="${cookie.saveId.value}">
+									<!-- autocomplete="off" : 자동완성 사용 X -->
 
-						<section>
-							<!-- type="submit"이 기본값 -->
-							<button>로그인</button>
-						</section>
-					</fieldset>
+									<input type="password" name="inputPw" placeholder="비밀번호">
+								</section>
+
+								<section>
+									<!-- type="submit"이 기본값 -->
+									<button>로그인</button>
+								</section>
+							</fieldset>
 
 
-					<!-- label 태그 내부에 input태그를 작성하면 자동 연결됨 -->
-					<label> <input type="checkbox" name="saveId"> 아이디
-						저장
-					</label>
+							<!-- label 태그 내부에 input태그를 작성하면 자동 연결됨 -->
+							<label> <input type="checkbox" name="saveId">
+								아이디저장
+							</label>
 
 
-					<!-- 회원가입 / ID/PW 찾기 -->
-					<article id="signUp-find-area">
-						<a href="#">회원가입</a> <span>|</span> <a href="#">ID/PW찾기</a>
-					</article>
-				</form>
+							<!-- 회원가입 / ID/PW 찾기 -->
+							<article id="signUp-find-area">
+								<a href="#">회원가입</a> <span>|</span> <a href="#">ID/PW찾기</a>
+							</article>
+						</form>
+					</c:when>
+
+
+					<%-- 로그인이 된 경우 --%>
+					<c:otherwise>
+						<article class="login-area">
+							<!-- 회원 프로필 이미지 -->
+							<a
+								href="${pageContext.request.contextPath}/member/myPage/profile">
+
+								<c:if test="${empty loginMember.profileImage}">
+									<img
+										src="${pageContext.request.contextPath}/resources/images/user.png"
+										id="member-profile">
+								</c:if> <c:if test="${!empty loginMember.profileImage}">
+									<img
+										src="${pageContext.request.contextPath}${loginMember.profileImage}"
+										id="member-profile">
+								</c:if>
+
+							</a>
+
+							<!-- 회원 정보 + 로그아웃 버튼 -->
+							<div class="my-info">
+								<div>
+									<a href="${pageContext.request.contextPath}/member/myPage/info"
+										id="nickname">${loginMember.memberNickname}</a> 
+									<a href="/community/member/logout" id="logout-btn">로그아웃</a>
+								</div>
+
+								<p>${loginMember.memberEmail}</p>
+							</div>
+						</article>
+					</c:otherwise>
+				</c:choose>
+
+
+
+				<!-- 절대경로 : /community -->
+				<!-- 상대경로 :  -->
 			</section>
+
 		</section>
 
 	</main>
