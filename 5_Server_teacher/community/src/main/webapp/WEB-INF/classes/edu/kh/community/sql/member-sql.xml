@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>member-sql.xml</comment>
+	
+	<!-- 회원 정보 조회 -->
+	<entry key="selectOne">
+		SELECT MEMBER_EMAIL, MEMBER_NICK, MEMBER_TEL, MEMBER_ADDR,
+		TO_CHAR(ENROLL_DT, 'YYYY"년" MM"월" DD"일"') AS ENROLL_DATE
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
+	<!-- 로그인(비밀번호, 탈퇴여부 제외) -->
+	<entry key="login">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NICK, MEMBER_TEL,
+		MEMBER_ADDR, PROFILE_IMG,
+		TO_CHAR(ENROLL_DT, 'YYYY-MM-DD HH24:MI:SS') AS ENROLL_DT
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = ?
+		AND MEMBER_PW = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
+	<entry key="emailDupCheck">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_EMAIL = ?
+		AND SECESSION_FL = 'N'
+	</entry>
+	
+	
+	<entry key="updateCertification">
+		UPDATE CERTIFICATION SET
+		C_NUMBER = ?,
+		ISSUE_DT = SYSDATE
+		WHERE EMAIL = ?
+	</entry>
+	
+	
+	<entry key="insertCertification">
+		INSERT INTO CERTIFICATION VALUES(?, ?, SYSDATE)
+	</entry>
+	
+	
+	<entry key="checkNumber">
+		SELECT 
+		   CASE WHEN (SELECT '1' FROM CERTIFICATION
+		            WHERE EMAIL = ?
+		            AND C_NUMBER = ?)  = 1
+		   
+		      THEN NVL( (SELECT '1' FROM CERTIFICATION
+		            WHERE EMAIL = ?
+		            AND ISSUE_DT + (INTERVAL '5' MINUTE) >= SYSDATE) , '2') 
+		
+		      ELSE '3'	
+		   END			
+		FROM DUAL
+	</entry>
+	
+	<entry key="updateProfileImage">
+		UPDATE MEMBER SET
+		PROFILE_IMG = ?
+		WHERE MEMBER_NO = ?
+	</entry>
+	
+		
+	<!-- 회원가입 -->
+	<entry key="signUp">
+		INSERT INTO MEMBER
+		VALUES(SEQ_MEMBER_NO.NEXTVAL , ? , ? , ? , ? , ?, DEFAULT, DEFAULT, DEFAULT)
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</properties>

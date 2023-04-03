@@ -76,7 +76,7 @@ document.getElementById("select1").addEventListener("click", function() {
 
 console.log("main2.js loaded.");
 function selectAll() {
-		console.log("slectAll");
+		console.log("selectAll");
 		$.ajax({
 			url: "member/selectAll",
 			type: "get",

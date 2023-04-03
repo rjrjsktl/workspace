@@ -123,10 +123,21 @@
 								아이디저장
 							</label>
 
+							<!-- 
+								WEB-INF 폴더는 외부로 부터 직접적으로 요청할 수 없는 폴더
+								왜? 중요한 코드(설정관련, 자바..등) 가 위치하는 폴더로서
+								외부로부터 접근을 차단하기 위해서 
+								- 보안 상 문제 때문에
+								
+								-> 대신 Servlet을 이용해서 내부 접근(forward) 가능
+								
+								즉, JSP파일에서 JSP파일로 옮길 순 없다.
+							 -->
 
 							<!-- 회원가입 / ID/PW 찾기 -->
 							<article id="signUp-find-area">
-								<a href="#">회원가입</a> <span>|</span> <a href="#">ID/PW찾기</a>
+								<a href="${contextPath}/member/signUp">회원가입</a> <span>|</span> <a
+									href="#">ID/PW찾기</a>
 							</article>
 						</form>
 					</c:when>
@@ -145,7 +156,7 @@
 										id="member-profile">
 								</c:if> <c:if test="${!empty loginMember.profileImage}">
 									<img
-										src="${pageContext.request.contextPath}${loginMember.profileImage}"
+										src="${pageContext.request.contextPath}/${loginMember.profileImage}"
 										id="member-profile">
 								</c:if>
 
@@ -155,8 +166,8 @@
 							<div class="my-info">
 								<div>
 									<a href="${pageContext.request.contextPath}/member/myPage/info"
-										id="nickname">${loginMember.memberNickname}</a> 
-									<a href="/community/member/logout" id="logout-btn">로그아웃</a>
+										id="nickname">${loginMember.memberNickname}</a> <a
+										href="/community/member/logout" id="logout-btn">로그아웃</a>
 								</div>
 
 								<p>${loginMember.memberEmail}</p>
@@ -177,8 +188,6 @@
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-
-	<!-- jQuery 라이브러리 추가 -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 		crossorigin="anonymous"></script>
@@ -187,5 +196,7 @@
 	<script src="${contextPath}/resources/js/main.js"></script>
 
 
+	
+		
 </body>
 </html>
