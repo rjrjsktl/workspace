@@ -390,7 +390,6 @@ function signUpValidate(){
             case "memberNickname":  str="닉네임이"; break;
             case "memberTel":       str="전화번호가"; break;
             case "sendEmail":       str="인증번호가"; break;
-
             }
 
             str += " 유효하지 않습니다.";
@@ -403,7 +402,6 @@ function signUpValidate(){
         }
         
     }
-    
 
     return true; // form태그 기본 이벤트 수행
 
