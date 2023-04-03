@@ -28,7 +28,7 @@ public class SendEmailServlet extends HttpServlet {
       String inputEmail = req.getParameter("inputEmail"); // 입력받은 이메일 파라미터 가져오기.
       String subject = "[Commnity 프로젝트] 회원 가입 이메일 인증번호"; // 제목
 
-      String fromEmail = "rjrjsktl@gmail.com"; // 보내는 사람으로 표시될 이메일 (이메일 따라서 안될수도 있음)
+      String fromEmail = "--"; // 보내는 사람으로 표시될 이메일 (이메일 따라서 안될수도 있음)
       String fromUsername = "관리자"; // 보내는 사람 이름
       String toEmail = inputEmail; // 받는사람, 콤마(,)로 여러개 나열 가능
 
@@ -38,8 +38,8 @@ public class SendEmailServlet extends HttpServlet {
       // 1) 2단계 인증 추가
       // 2) 앱 비밀번호 생성(메일, 서버컴퓨터 OS) -> 저장해두기 ( cxnejjswhpixcbni )
 
-      final String smtpEmail = "rjrjsktl@gmail.com"; // 이메일
-      final String password = "lzswoydqjbjzjjyl"; // 발급 받은 비밀번호
+      final String smtpEmail = "--"; // 이메일
+      final String password = "--"; // 발급 받은 비밀번호
       // 메일 옵션 설정
       Properties props = new Properties();
 
