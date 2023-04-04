@@ -35,18 +35,26 @@ public class MyPageChangePwServlet extends HttpServlet {
 
 		try {
 			MemberService service = new MemberService();
-			int result = service.updatePw(newPw, memberNo, oldPw);
-			if (result > 0) {
-				session.setAttribute("message", "비밀번호가 수정 되었습니다.");
+			String savedPw = service.selectMemberPassword(memberNo);
 
+			if (oldPw.equals(savedPw)) {
+
+				int result = service.updatePw(newPw, memberNo);
+
+				if (result > 0) {
+
+					session.setAttribute("message", "비밀번호 수정 성공");
+
+				} else {
+					session.setAttribute("message", "비밀번호 수정 실패");
+				}
 			} else {
-				session.setAttribute("message", "비밀번호 수정 실패.");
+				session.setAttribute("message", "현재 비밀번호가 올바르지 않습니다.");
 			}
-			resp.sendRedirect("changePw");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		resp.sendRedirect("changePw");
 	}
-
 }

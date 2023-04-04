@@ -13,8 +13,7 @@ public class MemberService {
 	// dao 변수 생성
 	private MemberDAO dao = new MemberDAO();
 
-
-	public Member selectOne(String memberEmail) throws Exception{
+	public Member selectOne(String memberEmail) throws Exception {
 
 		Connection conn = getConnection();
 
@@ -25,18 +24,16 @@ public class MemberService {
 		return member;
 	}
 
-
 	public List<Member> selectAll() throws Exception {
 
 		Connection conn = getConnection();
 
-		List<Member> memberList = dao.selectAll(conn); 
+		List<Member> memberList = dao.selectAll(conn);
 
 		close(conn);
 
 		return memberList;
 	}
-
 
 	public Member login(Member mem) throws Exception {
 
@@ -44,19 +41,19 @@ public class MemberService {
 
 		Member loginMember = dao.login(conn, mem);
 
-
 		close(conn);
 
 		return loginMember;
 
 	}
 
-
-	/** 이메일 중복검사 Service
+	/**
+	 * 이메일 중복검사 Service
+	 * 
 	 * @param memberEmail
 	 * @return
 	 */
-	public int emailDupCheck(String memberEmail) throws Exception{
+	public int emailDupCheck(String memberEmail) throws Exception {
 		Connection conn = getConnection();
 
 		int result = dao.emailDupCheck(conn, memberEmail);
@@ -66,12 +63,14 @@ public class MemberService {
 		return result;
 	}
 
-	/** 인증번호 DB 추가 Service
+	/**
+	 * 인증번호 DB 추가 Service
+	 * 
 	 * @param inputEmail
 	 * @param cNumber
 	 * @return
 	 */
-	public int insertCertification(String inputEmail, String cNumber) throws Exception{
+	public int insertCertification(String inputEmail, String cNumber) throws Exception {
 
 		Connection conn = getConnection();
 
@@ -79,13 +78,15 @@ public class MemberService {
 		int result = dao.updateCertification(conn, inputEmail, cNumber);
 
 		// 2) 일치하는 이메일이 없는 경우 -> 처음으로 인증번호 발급받음 -> 삽입(INSERT)
-		if(result == 0) {
-			result = dao.insertCertification(conn, inputEmail, cNumber);			
+		if (result == 0) {
+			result = dao.insertCertification(conn, inputEmail, cNumber);
 		}
 
 		// 트랜잭션 제어! (DML 구문)
-		if(result > 0)commit(conn);
-		else rollback(conn);
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
 
 		// 커넥션 반환
 		close(conn);
@@ -93,19 +94,17 @@ public class MemberService {
 		return result;
 	}
 
-
 	public int checkNumber(String cNumber, String inputEmail) throws Exception {
 
 		Connection conn = getConnection();
 
 		// 1) 입력한 이메일과 일치하는 값이 있으면 수정(UPDATE)
-		int result = dao.checkNumber(conn, cNumber, inputEmail );
+		int result = dao.checkNumber(conn, cNumber, inputEmail);
 
 		close(conn);
 
 		return result;
 	}
-
 
 	public int signUp(Member mem) throws Exception {
 
@@ -118,8 +117,10 @@ public class MemberService {
 		// 3) 트랜잭션 처리
 		// result가 0인 경우 -> DAO return 구문 잘못 작성
 
-		if(result > 0)	commit(conn);  
-		else			rollback(conn);
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
 
 		// 4) conn 반환(DBCP로 돌려주기)
 		close(conn);
@@ -128,7 +129,7 @@ public class MemberService {
 		return result;
 	}
 
-	public int memberNickname(String memberNickname) throws Exception{
+	public int memberNickname(String memberNickname) throws Exception {
 		Connection conn = getConnection();
 
 		int result = dao.memberNickname(conn, memberNickname);
@@ -137,7 +138,6 @@ public class MemberService {
 
 		return result;
 	}
-
 
 	public int memberTel(String memberTel) throws Exception {
 		Connection conn = getConnection();
@@ -150,23 +150,22 @@ public class MemberService {
 
 	}
 
-public int updateProfileImage(int memberNo, String profileImage) throws Exception{
-		
+	public int updateProfileImage(int memberNo, String profileImage) throws Exception {
+
 		Connection conn = getConnection();
-		
+
 		int result = dao.updateProfileImage(conn, memberNo, profileImage);
-		
+
 		// 트랜잭션 제어 처리
-		if(result > 0)  commit(conn);
-		else			rollback(conn);
-		
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+
 		close(conn);
-		
+
 		return result;
 	}
-
-
-
 
 	public String selectMemberPassword(int memberNo) throws Exception {
 		Connection conn = getConnection();
@@ -187,48 +186,33 @@ public int updateProfileImage(int memberNo, String profileImage) throws Exceptio
 		return result;
 	}
 
-
-
-
-
 	public int exitMember(int memberNo) throws Exception {
 
 		Connection conn = getConnection();
 		int result = dao.exitMember(conn, memberNo);
 
 		// 트랜잭션 제어 처리
-		if(result >0) commit(conn);
-		else          rollback(conn);
-
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
 
 		return result;
 	}
 
-
-	public int updateInfomation(int memberNo, String memberNickname, String memberTel, String memberAddress) throws Exception {
+	public int updateInfomation(int memberNo, String memberNickname, String memberTel, String memberAddress)
+			throws Exception {
 		Connection conn = getConnection();
 
 		int result = dao.updateInfomation(conn, memberNo, memberNickname, memberTel, memberAddress);
 
 		// 트랜잭션 제어 처리
-		if(result >0) commit(conn);
-		else          rollback(conn);
-
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
 
 		return result;
 	}
 
-
-
-
 }
-
-
-
-
-
-
-
-
-
-

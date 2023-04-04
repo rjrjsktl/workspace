@@ -186,7 +186,7 @@ public class MemberService {
 	 */
 	public int updateInfo(String memberNickname, String memberTel, int memberNo) throws Exception {
 		Connection conn = getConnection();
-		
+
 		int result = dao.updateInfo(conn, memberNickname, memberTel, memberNo);
 
 		// 트랜잭션 제어 처리
@@ -200,15 +200,24 @@ public class MemberService {
 		return result;
 	}
 
-	/** chantePw 페이지
+	public String selectMemberPassword(int memberNo) throws Exception {
+		Connection conn = getConnection();
+		String savedPw = dao.selectMemberPassword(conn, memberNo);
+		close(conn);
+		return savedPw;
+	}
+
+	/**
+	 * chantePw 페이지
+	 * 
 	 * @param memberPw
 	 * @param memberNo
 	 * @return result
 	 */
-	public int updatePw(String newPw, int memberNo, String oldPw) throws Exception {
-Connection conn = getConnection();
-		
-		int result = dao.updatePw(conn, newPw, memberNo, oldPw);
+	public int updatePw(String newPw, int memberNo) throws Exception {
+		Connection conn = getConnection();
+
+		int result = dao.updatePw(conn, newPw, memberNo);
 
 		// 트랜잭션 제어 처리
 		if (result > 0)
@@ -218,6 +227,23 @@ Connection conn = getConnection();
 
 		close(conn);
 
+		return result;
+	}
+
+	/** session 페이지
+	 * @param memberNo
+	 * @return result
+	 */
+	public int exitMember(int memberNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.exitMember(conn, memberNo);
+		
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		
 		return result;
 	}
 

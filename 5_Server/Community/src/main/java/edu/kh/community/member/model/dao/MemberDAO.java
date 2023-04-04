@@ -399,7 +399,39 @@ public class MemberDAO {
 		return result;
 	}
 
-	public int updatePw(Connection conn, String newPw, int memberNo, String oldPw) throws Exception {
+	/** 로그인 되어있는 사람의 번호 찾고 비밀번호 대조
+	 * @param conn
+	 * @param memberNo
+	 * @return
+	 * @throws Exception
+	 */
+	public String selectMemberPassword(Connection conn, int memberNo) throws Exception {
+		String sql = prop.getProperty("selectMemberPassword");
+		String savedPw = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				savedPw = rs.getString("MEMBER_PW");
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return savedPw;
+	}
+	
+	/** updatePw DAO
+	 * @param conn
+	 * @param newPw
+	 * @param memberNo
+	 * @return
+	 * @throws Exception
+	 */
+	public int updatePw(Connection conn, String newPw, int memberNo) throws Exception {
 
 		int result = 0;
 		
@@ -409,7 +441,6 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, newPw);
 			pstmt.setInt(2, memberNo);
-			pstmt.setString(3, oldPw);
 			
 			result = pstmt.executeUpdate();
 	
@@ -418,6 +449,31 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
+	
+	/** exitMember DAO
+	 * @param conn
+	 * @param memberNo
+	 * @return result
+	 * @throws Exception
+	 */
+	public int exitMember(Connection conn, int memberNo) throws Exception {
+
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("exitMember");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memberNo);
+			
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 	
 	
 

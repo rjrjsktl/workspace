@@ -43,7 +43,7 @@ public class SignUpServlet extends HttpServlet {
 		String memberAddress = null;
 
 		if (!address[0].equals("")) { // 우편번호가 빈칸이 아니라면 == 주소 작성
-			memberAddress = String.join(",,", address);
+			memberAddress = String.join(",", address);
 
 			// String.join("구분자", 배열)
 			// -> 배열 요소를 하나의 문자열로 반환
