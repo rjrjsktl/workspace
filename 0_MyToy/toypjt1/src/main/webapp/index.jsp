@@ -17,7 +17,7 @@
 
             <main>
                 <div class="content">
-                    <form id="form" method="post" name="note-form" onsubmit="return noteValidate()">
+                    <form id="form" method="post" name="note-form" onsubmit="return mainValidate()">
                         <!-- title 단 -->
                         <div class="divtitl" id="bigtitl">Notes App</div>
                         <div class="divtitl" id="smalltitl">Take notes and never forget.</div>
@@ -32,8 +32,14 @@
                         </select>
 
                         <!-- Note리스트 추가 되는 단 -->
-
-
+                        <div id="notectner">
+                            <div id="addtitle">
+                                <div class="nttitle">노트제목</div>
+                                <div class="nttime">노트시간</div>
+                            </div>
+                        </div>
+                        <!-- 추가 확인용 버튼 삭제해야함-->
+                        <button id="checkbtn">추가확인용</button>
                         <!-- create버튼 -->
                         <button type="button" id="createbtn" onclick="location.href='${pageContext.request.contextPath}/note/create'">Create Note</button>
                     </form>

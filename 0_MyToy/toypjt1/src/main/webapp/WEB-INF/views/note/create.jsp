@@ -24,17 +24,26 @@
                 <div class="divtitl" id="smalltitl">Take notes and never forget.</div>
                 
                 <!-- back 버튼 등 기능 단 -->
-                <button id="backbtn">&lt;back</button>
-
+                <button type="button" id="backbtn" value="back" onclick="window.history.back()">&lt;back</button>
+                <span class="nowtm" id="nowtm">time</span>
                 <!-- Note리스트 추가 되는 단 -->
-
+                <br><input type="text" id="nttitle" name="nttitle" placeholder="Note Title" maxlength="30" autocomplete="off" required> 
+                <br>
+                <textarea type="text" id="nttext" name="nttext" placeholder="Enter Note Text" style="resize: none;" maxlength="1000" autocomplete="off" required></textarea>
+                <!--remove note 버튼 -->
+                <button type="button" id="removebtn" onclick="location.href='${pageContext.request.contextPath}/note/remove'">Remove Note</button>
+                <!-- done 버튼 -->
+                <button type="button" id="donebtn" onclick="location.href='${pageContext.request.contextPath}/note/done'">Done</button>
 
                 <!-- create버튼 -->
-                <button id="createbtn">Create Note</button>
-
+                <!-- <button type="button" id="createbtn" onclick="location.href='${pageContext.request.contextPath}/note/create'">Create Note</button> -->
+                    
             </form>
         </div>
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- main.js 연결 -->
     <script src="${contextPath}/resources/js/main.js"></script>

@@ -1,0 +1,61 @@
+#nttitle {
+    width: 96%;
+    height: 30px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#nttitle::placeholder { 
+    color: wheat;
+    font-size: 16px;
+    font-style: normal;
+}
+
+#nttext {
+    width: 96%;
+    height: 185px;
+    border-radius: 5px;
+}
+#nttext::placeholder { 
+    color: wheat;
+    font-size: 16px;
+    font-style: normal;
+}
+
+#backbtn {
+    height: 30px;
+    color: wheat;
+    background-color: black;
+    border-radius: 5px;
+
+}
+
+#removebtn {
+    height: 30px;
+    color: wheat;
+    background-color: black;
+    border-radius: 5px;
+    
+    position: absolute;
+    bottom: 15px;
+    left: 30px;
+}
+
+#donebtn {
+    height: 30px;
+    color: wheat;
+    background-color: black;
+    border-radius: 5px;
+    
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+}
+
+/* 나중에 변경 */
+.nowtm {
+    position: relative;
+    font-size: 14px;
+    color: wheat;
+    right: 30px;
+}
