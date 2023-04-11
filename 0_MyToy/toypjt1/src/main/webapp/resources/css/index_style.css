@@ -25,6 +25,23 @@ main {
     margin-left: 15px;
 }
 
+#hometitle {
+    font-size: 70px;
+    text-align: center;
+}
+
+#gobtn {
+    height: 50px;
+    color: wheat;
+    background-color: black;
+    border-radius: 5px;
+    margin: auto;
+    
+    position: absolute;
+    bottom: 50px;
+    left: 250px;
+}
+
 #bigtitl {
     font-size: 40px;
     font-weight: bold;
@@ -74,14 +91,14 @@ option {
     right: 30px;
 }
 
-/* #notectner {
+#notectner {
     width: 97%;
     height: 45px;
     background-color: wheat;
     border: 1px solid black;
     border-radius: 5px;
     margin-top: 5px;
-} */
+}
 
 
 /* 삭제해야함 */

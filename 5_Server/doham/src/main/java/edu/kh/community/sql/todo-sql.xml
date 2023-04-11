@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>todo-sql.xml</comment>
+	
+
+
+	<entry key="insertTodo">
+		INSERT INTO TODOLIST
+		VALUES (?, ? ,(SELECT MEMBER_NO FROM MEMBER WHERE
+		MEMBER_NO= ? ),'N')
+	</entry>
+
+
+	<entry key="selectTodoAll">
+		SELECT * FROM
+		TODOLIST WHERE MEMBER_NO = ?
+		ORDER BY TODO_NO ASC
+	</entry>
+	
+	<entry key="deleteAll">
+		DELETE TODOLIST
+		WHERE MEMBER_NO=? AND FLAG='Y'
+	</entry>
+	
+	<entry key="updateAllY">
+		UPDATE TODOLIST
+		SET FLAG='Y' WHERE MEMBER_NO=?
+	</entry>
+	
+	<entry key="updateAllN">
+		UPDATE TODOLIST
+		SET FLAG='N' WHERE MEMBER_NO=?
+	</entry>
+	
+	<entry key="updateOneY">
+		UPDATE TODOLIST
+		SET FLAG='Y' WHERE TODO_NO =?
+	</entry>
+	
+	<entry key="updateOneN">
+		UPDATE TODOLIST
+		SET FLAG='N' WHERE TODO_NO=?
+	</entry>
+	
+	<entry key="changeContents">
+		UPDATE TODOLIST
+		SET TODO_CONTENTS=? WHERE TODO_NO=?
+	</entry>
+	
+	
+	
+</properties>

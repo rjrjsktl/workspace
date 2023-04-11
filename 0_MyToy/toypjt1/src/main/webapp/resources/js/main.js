@@ -1,3 +1,17 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const nttitle = document.getElementById("nttitle");
 const nttext = document.getElementById("nttext");
 const donebtn = document.getElementById("donebtn");
@@ -19,11 +33,26 @@ donebtn.addEventListener("click", function noteValidate() {
     return true;
 });
 
-const notectner = document.getElementById("notectner");
-const checkbtn = document.getElementById("checkbtn");
-const addtitle = document.getElementById("addtitle");
+let notectner = document.getElementById("notectner");
+let checkbtn = document.getElementById("checkbtn");
+let addtitle = document.getElementById("addtitle");
+
+function noteAll() {
+    $.ajax({
+        url: "note/noteAll",
+        dataType: "JSON",
+
+        sussess: function() 
+
+    })
+
+}
+
+
+
+
 
 checkbtn.addEventListener("click", function () {
 
-
+    addtitle.append('<div class="nttitle">노트제목</div><div class="nttime">노트시간</div>');
 });

@@ -1,0 +1,169 @@
+body {
+    margin: 0 auto;
+   
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    color: green;
+    font-size: 4em;
+}
+
+.todo-input-section {
+    width: 500px;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: 1px solid lightgray;
+}
+
+
+
+.todo-input-section span {
+    width: 50px;
+    height: 50px;
+}
+
+.task-box input:first-child {
+    width: 10%;
+    font-size: 1.5em;
+    color: #4d4d4d;
+    border: none;
+    outline: none;
+}
+
+.todo-input-section :first-child {
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: lightgray;
+}
+
+.todo-input-section input {
+    width: 90%;
+    height: 60%;
+    border-style: none;
+    font-size: 1.5em;
+    color: #4d4d4d;
+}
+
+input:focus {
+    outline: none;
+    
+}
+
+::placeholder {
+    color: lightgray;
+}
+
+.task-box {
+    width: 500px;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    border-bottom: 1px solid lightgray;
+}
+
+.task-box span {
+    margin-left:10px;
+    width: 30px; /* 작은 값을 넣어 원 크기를 줄입니다. */
+    height: 30px; /* 작은 값을 넣어 원 크기를 줄입니다. */
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    color:lightgray;
+    cursor:pointer;
+}
+
+.task-box input:nth-child(2) {
+    width: 80%;
+    font-size: 1.5em;
+
+    border: none;
+    outline: none;
+    margin-left:10px;
+}
+
+.task-box button {
+    width:10%;
+    border: none;
+    background-color: white;
+    color: white;
+}
+
+.task-box button:hover {
+    color: green;
+    transition: color 2s;
+    font-weight:bold;
+    font-size: 1.5em;
+}
+
+#userselect {
+    width: 500px;
+    height: 40px;
+    display: flex;
+    margin: 0 auto;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:100px;
+}
+
+#userselect span {
+    width: 30%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#userselect ul {
+    display: flex;
+    width: 40%;
+    list-style: none;
+    margin-left: 0px;
+    margin-right: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+#userselect ul li {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin-right: 10px;
+    height: 25px;
+    padding: 0 8px;
+    font-size:0.9em;
+    cursor:pointer;
+}
+
+
+#clear {
+    width: 30%;
+    text-align: center;
+    margin:0;
+    padding:0;
+    background-color: white;
+    border:none;
+    font-size: 0.9em;
+    cursor:pointer;
+}
+
+#items{
+    display: inline-block;
+    text-align: right;
+    
+}

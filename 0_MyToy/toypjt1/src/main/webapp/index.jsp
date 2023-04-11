@@ -8,7 +8,7 @@
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>코드네임명 : Note</title>
+            <title>코드네임 Note</title>
 
             <link rel="stylesheet" href="resources/css/index_style.css">
         </head>
@@ -17,40 +17,19 @@
 
             <main>
                 <div class="content">
-                    <form id="form" method="post" name="note-form" onsubmit="return mainValidate()">
-                        <!-- title 단 -->
-                        <div class="divtitl" id="bigtitl">Notes App</div>
-                        <div class="divtitl" id="smalltitl">Take notes and never forget.</div>
-                        <!-- input 등 기능 단 -->
+                    <form id="form" method="post" name="note-form" onsubmit="return homeValidate()">
+                        
 
-                        <input type="text" id="search" name="search" placeholder="Search" maxlength="30"
-                            autocomplete="off" required>
-                        <select name="sltsearch" id="sltsearch">
-                            <option value="edited">Sort by last Edited</option>
-                            <option value="created">Sort by recently created</option>
-                            <option value="alphabetical">Sort by Alphabetical</option>
-                        </select>
+                        <div class="hometitle" id="hometitle">Welcom Yun Note</div>
 
-                        <!-- Note리스트 추가 되는 단 -->
-                        <div id="notectner">
-                            <div id="addtitle">
-                                <div class="nttitle">노트제목</div>
-                                <div class="nttime">노트시간</div>
-                            </div>
-                        </div>
-                        <!-- 추가 확인용 버튼 삭제해야함-->
-                        <button id="checkbtn">추가확인용</button>
-                        <!-- create버튼 -->
-                        <button type="button" id="createbtn" onclick="location.href='${pageContext.request.contextPath}/note/create'">Create Note</button>
+                        <button type="button" id="gobtn" 
+                        onclick="location.href='${pageContext.request.contextPath}/note/main'">Note 작성하로 고고</button>
+        
                     </form>
 
                 </div>
 
             </main>
-
-
-
-
 
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
