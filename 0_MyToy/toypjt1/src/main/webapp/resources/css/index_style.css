@@ -91,24 +91,34 @@ option {
     right: 30px;
 }
 
-#notectner {
+/* addbox에 들어갈 css */
+.addform {
     width: 97%;
-    height: 45px;
+    height: 50px;
     background-color: wheat;
-    border: 1px solid black;
+    border: 0px;
     border-radius: 5px;
     margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+.addform:hover { background-color: aquamarine;}
+
+.addtitle {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
 }
 
-
-/* 삭제해야함 */
-#checkbtn {
-    height: 30px;
-    color: wheat;
-    background-color: black;
-    border-radius: 5px;
-    
-    position: absolute;
-    bottom: 15px;
-    left: 30px;
+.adddate {
+    font-size: 9px;
+    text-align: center;
 }

@@ -34,7 +34,10 @@
 
                         <!-- Note리스트 추가 되는 단 -->
                         <div id="addbox">
-                            <!-- <div class="nttitle">노트제목</div><div class="nttime">노트시간</div> -->
+                            <div class="addform">
+                                No Note
+                            </div>
+                            
                         </div>
                         <!-- create버튼 -->
                         <button type="button" id="createbtn"
@@ -55,7 +58,7 @@
 
 
             <!-- main.js 연결 -->
-            <script src="${contextPath}/resources/js/main.js"></script>
+            <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
         </body>
 

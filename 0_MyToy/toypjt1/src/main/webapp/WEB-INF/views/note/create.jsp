@@ -30,14 +30,10 @@
                 <br><input type="text" id="nttitle" name="nttitle" placeholder="Note Title" maxlength="30" autocomplete="off" required> 
                 <br>
                 <textarea type="text" id="nttext" name="nttext" placeholder="Enter Note Text" style="resize: none;" maxlength="1000" autocomplete="off" required></textarea>
-                <!--remove note 버튼 -->
-                <button type="button" id="removebtn" onclick="location.href='${pageContext.request.contextPath}/note/remove'">Remove Note</button>
+                <!--remove note 버튼 아마 onclick 바꿔야 할거임-->
+                <button type="button" id="removebtn" onclick="clickRemoveBtn()">Remove Note</button>
                 <!-- done 버튼 -->
-                <button type="button" id="donebtn" onclick="location.href='${pageContext.request.contextPath}/note/done'">Done</button>
-
-                <!-- create버튼 -->
-                <!-- <button type="button" id="createbtn" onclick="location.href='${pageContext.request.contextPath}/note/create'">Create Note</button> -->
-                    
+                <button type="button" id="donebtn" onclick="clickDoneBtn()">Done</button>
             </form>
         </div>
     </main>
@@ -46,7 +42,8 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- main.js 연결 -->
-    <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+
 
 
 
