@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<comment>member-sql.xml</comment>
+	<comment>Note-sql.xml</comment>
 
 	<!-- ;은 무조건 빼야함 -->
 
 	<!-- 회원 정보 조회 -->
 	<entry key="viewNote">
-		SELECT NOTE_TITLE,
-		TO_CHAR(ENROLL_DT, 'YYYY-MM-DD HH24:MI:SS')) AS ENROLL_DATE
+		SELECT NOTE_NO, NOTE_TITLE,	ENROLL_DT
 		FROM NOTE
-		AND SECESSION_EX = 'N'
+		WHERE SECESSION_EX = 'N'
+	</entry>
+	
+	<entry key="doneBtn">
+		INSERT INTO NOTE VALUES
+		(SEQ_NOTE_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT)
 	</entry>
 
 

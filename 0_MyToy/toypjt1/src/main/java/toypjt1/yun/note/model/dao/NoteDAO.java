@@ -77,17 +77,38 @@ public class NoteDAO {
 			while (rs.next()) {
 				note = new Note();
 				
-				//note.setNoteNo(rs.getInt(1));
-				note.setNoteTitle(rs.getString(1));
+				note.setNoteNo(rs.getInt(1));
+				note.setNoteTitle(rs.getString(2));
 				//note.setNoteMemo(rs.getString(3));
-				note.setNoteDate(rs.getString(2));
+				note.setNoteDate(rs.getString(3));
 				
 				ntlist.add(note);
 			}
+			System.out.println(ntlist);
 		} finally {
 			close(rs);
 			close(pstmt);
 		}
 		return ntlist;
 		}
+
+	public int doneBtn(Connection conn, String noteTitle, String noteMemo) throws Exception{
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("doneBtn");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, noteTitle);
+			pstmt.setString(2, noteMemo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
 }

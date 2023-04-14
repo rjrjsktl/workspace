@@ -1,14 +1,14 @@
 const notectner = document.getElementById("notectner");
 const checkbtn = document.getElementById("checkbtn");
-const addtitle = document.getElementById("addtitle");
 const addbox = document.getElementById("addbox");
 
 function viewNote() {
+    console.log("viewnote");
     $.ajax({
         url: "viewnote",
-        dataType: "JSON",
+        dataType: "json",
 
-        sussess: function (ntlist) {
+        success: function(ntlist) {
 
             const addbox = document.getElementById("addbox");
 
@@ -36,7 +36,7 @@ function viewNote() {
                 addbox.append(addform);
             }
         },
-        error: function (request) {
+        error: function(request) {
             console.log("AJAX 에러 발생")
             console.log("상태코드 : " + request.status) // 404, 500
         }
@@ -46,12 +46,12 @@ function viewNote() {
 (function () {
     console.log("start")
     viewNote();
-    window.setInterval(viewNote, 1000)
+    window.setInterval(viewNote, 10000)
 })();
 
 
 const nttitle = document.getElementById("nttitle");
-const nttext = document.getElementById("nttext");
+const ntmemo = document.getElementById("ntmemo");
 const donebtn = document.getElementById("donebtn");
 const removebtn = document.getElementById("removebtn");
 
@@ -64,23 +64,40 @@ function clickDoneBtn() {
         window.alert("제목을 입력하라옹");
 
         nttitle.focus();
-        return false;
+        return;
     }
     // 제목 입력 o, 내용 압력 x
-    if (nttext.value.trim() === "") {
+    if (ntmemo.value.trim() === "") {
         window.alert("내용이 없다옹");
 
-        nttext.focus();
-        return false;
+        ntmemo.focus();
+        return;
     } else {
         window.alert("노트 저장을 완료 했다옹");
     }
-    return true;
+    console.log("doneServlet");
+    $.ajax({
+        url: "done",
+        data: {"noteTitle" : nttitle.value,
+                "noteMemo" : ntmemo.value},
+        type: "POST",
+        dataType: "json",
+
+        success: function() {
+            console.log("AJAX 성공");
+            location.href="/toypjt1/note/main";
+        },
+        error: function(request) {
+            console.log("AJAX 에러 발생")
+            console.log("상태코드 : " + request.status) // 404, 500
+        }
+    })
 }
 
 function clickRemoveBtn() {
     window.alert("삭제 완료 했다옹");
 }
+
 
 
 

@@ -13,12 +13,13 @@ main {
 .content {
     margin: auto;
     width: 600px;
-    height: 450px;
+    min-height: 450px;
     background-color: gainsboro;
 
     border-radius: 30px;
    
-    position: relative;
+    /* position: relative; */
+    /* position: absolute; */
 }
 
 #form {
@@ -55,13 +56,15 @@ main {
 }
 
 #search {
-    width: 63%;
+    width: 60%;
     height: 30px;
     border: 0px;
     border-radius: 5px;
     font-weight: bold;
     color: wheat;
     background-color: black;
+
+    padding-left: 15px;
 }
 #search::placeholder {
     color: wheat;
@@ -80,15 +83,26 @@ option {
     background-color: black;
 }
 
+#btn-container{
+    
+    display: flex;
+    justify-content: right;
+    margin-right: 15px;
+
+}
+
 #createbtn {
     height: 30px;
     color: wheat;
+    /* margin-top: 100px; */
     background-color: black;
     border-radius: 5px;
     
-    position: absolute;
-    bottom: 15px;
-    right: 30px;
+    /* position: fixed; */
+
+    margin-top: 10px;
+    margin-bottom: 15px;
+    align-items:end;
 }
 
 /* addbox에 들어갈 css */
@@ -121,4 +135,12 @@ option {
 .adddate {
     font-size: 9px;
     text-align: center;
+}
+
+#addbox {
+    height: 50%;
+    overflow: hidden;
+    display: flex;
+
+    flex-direction: column;
 }

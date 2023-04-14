@@ -13,6 +13,7 @@
             <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index_style.css">
             <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main_style.css">
         </head>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
         <body>
 
@@ -37,13 +38,16 @@
                             <div class="addform">
                                 No Note
                             </div>
-                            
                         </div>
-                        <!-- create버튼 -->
+
+                        
+                    </form>
+                    <!-- create버튼 -->
+                    <div id="btn-container">
                         <button type="button" id="createbtn"
                             onclick="location.href='${pageContext.request.contextPath}/note/create'">Create
                             Note</button>
-                    </form>
+                    </div>
 
                 </div>
 

@@ -12,19 +12,21 @@
 
             <link rel="stylesheet" href="resources/css/index_style.css">
         </head>
+        <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 
         <body>
 
             <main>
                 <div class="content">
                     <form id="form" method="post" name="note-form" onsubmit="return homeValidate()">
-                        
+
 
                         <div class="hometitle" id="hometitle">Welcom Yun Note</div>
-
-                        <button type="button" id="gobtn" 
-                        onclick="location.href='${pageContext.request.contextPath}/note/main'">Note 작성하로 고고</button>
-        
+                        <div id="btn-container">
+                            <button type="button" id="gobtn"
+                                onclick="location.href='${pageContext.request.contextPath}/note/main'">Note 작성하로 고고
+                            </button>
+                        </div>
                     </form>
 
                 </div>

@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import toypjt1.yun.note.model.service.NoteService;
 import toypjt1.yun.note.model.vo.Note;
 
-@WebServlet("viewnote")
+@WebServlet("/note/viewnote")
 public class ViewnoteServlet extends HttpServlet{
 
 	@Override
@@ -28,10 +28,5 @@ public class ViewnoteServlet extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
-	
-	
-	
-	
 	}
 }

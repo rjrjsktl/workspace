@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index_style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/create_style.css">
 </head>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <body>
     <main>
         <div class="content">
@@ -29,11 +30,13 @@
                 <!-- Note리스트 추가 되는 단 -->
                 <br><input type="text" id="nttitle" name="nttitle" placeholder="Note Title" maxlength="30" autocomplete="off" required> 
                 <br>
-                <textarea type="text" id="nttext" name="nttext" placeholder="Enter Note Text" style="resize: none;" maxlength="1000" autocomplete="off" required></textarea>
-                <!--remove note 버튼 아마 onclick 바꿔야 할거임-->
-                <button type="button" id="removebtn" onclick="clickRemoveBtn()">Remove Note</button>
-                <!-- done 버튼 -->
-                <button type="button" id="donebtn" onclick="clickDoneBtn()">Done</button>
+                <textarea type="text" id="ntmemo" name="ntmemo" placeholder="Enter Note Text" style="resize: none;" maxlength="1000" autocomplete="off" required></textarea>
+                <div id="btn-container">
+                    <!--remove note 버튼 아마 onclick 바꿔야 할거임-->
+                    <button type="button" id="removebtn" onclick="clickRemoveBtn()">Remove Note</button>
+                    <!-- done 버튼 -->
+                    <button type="button" id="donebtn" onclick="clickDoneBtn()">Done</button>
+                </div>
             </form>
         </div>
     </main>

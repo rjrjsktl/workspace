@@ -28,4 +28,17 @@ public class NoteService {
 		
 		return ntlist;
 	}
+
+	public int doneBtn(String noteTitle, String noteMemo) throws Exception{
+		Connection conn = getConnection();
+		
+		int result = dao.doneBtn(conn, noteTitle, noteMemo);
+		
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
 }
