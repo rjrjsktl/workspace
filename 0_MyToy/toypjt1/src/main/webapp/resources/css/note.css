@@ -1,0 +1,116 @@
+/* 머리라인 */
+.titlesize {
+    width: 100%;
+    height: 70px;
+}
+
+.titlesize > div {
+    padding-left: 20px;
+}
+
+.bigtitl {
+    font-size: 35px;
+    font-weight: 1000;
+}
+.smalltitl {
+    font-size: 15px;
+}
+/* 몸통라인 */
+.bodycontainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+}
+
+.bodytop {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.search {
+    width: 60%;
+    height: 30px;
+    border: 0px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: wheat;
+    background-color: darkslategray;
+
+    padding-left: 5px;
+}
+.search::placeholder {
+    color: wheat;
+}
+
+.sltsearch {
+    width: 38%;
+    height: 30px;
+    font-weight: bold;
+    border: 1px solid darkslategray;
+    border-radius: 5px;
+    color: darkslategray;
+}
+
+option {
+    font-weight: bold;
+    color: wheat;
+    background-color: darkslategray;
+}
+/* 몸통 - 노트 추가 되는 라인 */
+.bodybottom {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#addbox {
+    height: 100%;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.addform {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    color: wheat;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: darkslategray;
+    border: 1px solid darkslategray;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.addform:hover {
+    color: darkslategray;
+    background-color: wheat;
+    border-radius: 5px;
+}
+
+.addtitle {
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 5px;
+    text-align: left;
+}
+
+.adddate {
+    font-size: 10px;
+    padding-left: 5px;
+    text-align: left;
+}
+/* 버튼라인 */
+.btncontainer {
+    display: flex;
+    justify-content: center;
+}
+
+

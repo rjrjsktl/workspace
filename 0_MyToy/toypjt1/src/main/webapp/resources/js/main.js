@@ -10,7 +10,6 @@ function viewNote() {
 
         success: function(ntlist) {
 
-            const addbox = document.getElementById("addbox");
 
             // addnote
             addbox.innerHTML = "";
@@ -45,8 +44,7 @@ function viewNote() {
 
 (function () {
     console.log("start")
-    viewNote();
-    window.setInterval(viewNote, 10000)
+    window.setInterval(viewNote(), 1000000000000)
 })();
 
 
@@ -85,7 +83,7 @@ function clickDoneBtn() {
 
         success: function() {
             console.log("AJAX 성공");
-            location.href="/toypjt1/note/main";
+            location.href="/toypjt1/note/note";
         },
         error: function(request) {
             console.log("AJAX 에러 발생")

@@ -18,7 +18,7 @@ public class DoneServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "/WEB-INF/views/note/main.jsp";
+		String path = "/WEB-INF/views/note/note.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 	@Override

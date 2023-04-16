@@ -7,15 +7,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create 페이지</title>
+    <title>Note 페이지</title>
 
     <!-- <link rel="stylesheet" href="../css/main.css"> -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
-    <!-- <link rel="stylesheet" href="../css/create.css"> -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/create.css">
-
+    <link rel="stylesheet" href="../css/main.css">
+    <!-- <link rel="stylesheet" href="../css/note.css"> -->
+    <link rel="stylesheet" href="../css/note.css">
+    
 </head>
 <body>
+
+    <!-- 이거는 맨 마지막에 해야함 왜냐면 움직이면서 추가 기능 필요 -->
+
+
 
     <div id="wrap">
         <div class="topwrap">
@@ -29,24 +33,26 @@
             <div class="bodycontainer"> <!-- 글씨 나오는 싸이즈(create에선 가운데 틀) -->
                 <div class="bodytop">
                     <!-- back 버튼 등 기능 단 -->
-                    <button type="button" id="backbtn" value="back"
-                        onclick="window.history.back()">&lt;back</button>
-                    <span class="nowtm" id="nowtm">time</span>
+                    <input type="text" class="search" name="search" placeholder="Search" maxlength="30"
+                            autocomplete="off" required>
+                    <select name="sltsearch" class="sltsearch">
+                        <option value="edited">Sort by last Edited</option>
+                        <option value="created">Sort by recently created</option>
+                        <option value="alphabetical">Sort by Alphabetical</option>
+                    </select>
                 </div>
                     <!-- Note리스트 추가 되는 단 -->
                 <div class="bodybottom">
-                    <input type="text" id="nttitle" name="nttitle" placeholder="Note Title"
-                        maxlength="30" autocomplete="off">
-                    <textarea type="text" id="ntmemo" name="ntmemo" placeholder="Enter Note Text" maxlength="1000" autocomplete="off"></textarea>
+                    <div id="addbox">
+                        <div class="addform">No Result</div>
+                        <div class="addform">No Result</div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="bottomwrap">
             <div class="btncontainer">
-                <!--remove note 버튼 아마 onclick 바꿔야 할거임-->
-                <button type="button" id="removebtn" onclick="clickRemoveBtn()">Remove</button>
-                <!-- done 버튼 -->
-                <button type="button" id="donebtn" onclick="clickDoneBtn()">Done</button>
+                <button type="button" id="createbtn" onclick="location.href='${pageContext.request.contextPath}/note/create'">Create</button>
             </div>
         </div>
     </div>
@@ -56,6 +62,6 @@
 
     <!-- main.js 연결 -->
     <script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-
+    
 </body>
 </html>
