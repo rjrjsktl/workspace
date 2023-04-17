@@ -17,7 +17,7 @@ public class PassNoteServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = "/WEB-INF/views/note/create.jsp";
+		String path = "/WEB-INF/views/note/update.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 	@Override
@@ -29,7 +29,15 @@ public class PassNoteServlet extends HttpServlet{
 		HttpSession session = req.getSession();
 		
 		Note clickNote = (Note)session.getAttribute("clickNote");
-		int noteNo = clickNote.getNoteNo();
+//		int noteNo = clickNote.getNoteNo();
+		int noteNo = 0;
+		
+		if (clickNote != null) {
+		    noteNo = clickNote.getNoteNo();
+		    // noteNo 값을 사용하는 코드
+		} else {
+		    // clickNote가 null인 경우에 대한 처리
+		}
 	
 		try {
 			NoteService service = new NoteService();

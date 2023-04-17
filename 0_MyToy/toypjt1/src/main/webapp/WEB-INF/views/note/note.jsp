@@ -44,7 +44,9 @@
                 <div class="bodybottom">
                     <div id="addbox">
                         <form class="addform">
-                            No Result
+                            <div class="addinform">
+                                No Result
+                            </div>
                         </form>
                     </div>
                 </div>

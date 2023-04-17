@@ -44,8 +44,6 @@
         </div>
         <div class="bottomwrap">
             <div class="btncontainer">
-                <!--remove note 버튼 아마 onclick 바꿔야 할거임-->
-                <button type="button" id="removebtn" onclick="clickRemoveBtn()">Remove</button>
                 <!-- done 버튼 -->
                 <button type="button" id="donebtn" onclick="clickDoneBtn()">Done</button>
             </div>

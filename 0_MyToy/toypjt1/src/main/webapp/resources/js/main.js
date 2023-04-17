@@ -9,8 +9,6 @@ function viewNote() {
         dataType: "json",
 
         success: function(ntlist) {
-
-
             // addnote
             addbox.innerHTML = "";
 
@@ -24,6 +22,8 @@ function viewNote() {
 
                 const addinform = document.createElement("div");
                 addinform.classList.add("addinform");
+                
+                addinform.onclick = passNote;
                 // div에 내용 추가
                 const addtitle = document.createElement("div");
                 addtitle.classList.add("addtitle");
@@ -33,7 +33,13 @@ function viewNote() {
                 adddate.classList.add("adddate");
                 adddate.innerText = item.noteDate;
 
-                addinform.append(addtitle, adddate);
+                const addno = document.createElement("input");
+                addno.classList.add("addno");
+                addno.type="hidden";
+                addno.name="noteNo";
+                addno.value=item.noteNo;
+
+                addinform.append(addtitle, adddate, addno);
                 // div에 넣고싶은 div 2개 추가
                 addform.append(addinform);
 
@@ -107,9 +113,63 @@ function clickRemoveBtn() {
 
 // function passNote() {
 //     console.log("addform클릭");
-//     location.href="/toypjt1/note/pass";
+//     // location.href="/toypjt1/note/pass";
+//     const noteNo = document.getElementsByClassName("addno");
+//     $(".addform").submit();
+//     $(".noteNo").val(noteNo);
+// }
+$(".addinform").on("click", passNote);
+function passNote() {
+    console.log("addform클릭");
+    const form = $(this); 
+    const noteNo = form.find(".addno").val(); // 수정된 부분
+    
+    form.find("input[name='noteNo']").val(noteNo); // 수정된 부분
+    
+    form.submit();
+}
 
-//     nttitle.value = "noteTitle";
-//     ntmemo.value = "noteMemo";
-//     nowtm.value = "noteDate";
+// Servlet에서 받은 값(예: noteTitle, noteMemo)을 해당 페이지의 nttitle과 ntmemo에 입력하는 함수
+function setInputValues(noteTitle, noteMemo) {
+    document.getElementById("nttitle").value = noteTitle; // Note Title 값을 입력
+    document.getElementById("ntmemo").value = noteMemo; // Note Memo 값을 입력
+}
+// 현재 시간을 nowtm 요소에 표시하는 함수
+function displayCurrentTime() {
+    var now = new Date();
+    var hours = String(now.getHours()).padStart(2, '0');
+    var minutes = String(now.getMinutes()).padStart(2, '0');
+    var seconds = String(now.getSeconds()).padStart(2, '0');
+    var currentTime = hours + ':' + minutes + ':' + seconds;
+    document.getElementById('nowtm').textContent = currentTime;
+}
+
+// 페이지 로드 시 현재 시간 표시
+displayCurrentTime();
+
+// clickNote 객체의 값을 nttitle, ntmemo 요소에 설정하는 함수
+function setNoteValues() {
+    // var clickNote = { // clickNote 객체 예시
+    //     noteTitle: 'Note Title Example',
+    //     noteMemo: 'Note Memo Example'
+    // }
+
+    document.getElementById('nttitle').value = clickNote.noteTitle;
+    document.getElementById('ntmemo').value = clickNote.noteMemo;
+}
+
+
+
+// // Note Title, Note Memo, Note Date 값을 가져와서 필요한 처리를 수행하는 함수
+// function clickUpdateBtn() {
+//     var noteTitle = document.getElementById("nttitle").value; // Note Title 값을 가져옴
+//     var noteMemo = document.getElementById("ntmemo").value; // Note Memo 값을 가져옴
+//     var noteDate = document.getElementById("noteDate").value; // Note Date 값을 가져옴
+
+//     // 필요한 처리를 수행
+//     // ...
+
+//     // 값들을 서버로 전송하고 페이지를 리다이렉트하는 등의 로직을 수행
+//     // ...
+
 // }

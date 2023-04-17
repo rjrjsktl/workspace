@@ -74,9 +74,5 @@
 /* 버튼라인 */
 .btncontainer {
     display: flex;
-    justify-content: space-between;
-}
-.btncontainer > button {
-    margin-left: 20px;
-    margin-right: 20px;
+    justify-content: center;
 }

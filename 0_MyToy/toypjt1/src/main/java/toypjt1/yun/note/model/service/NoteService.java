@@ -57,11 +57,6 @@ public class NoteService {
 		
 		int result = dao.passNote(conn, noteNo);
 		
-		if (result > 0)
-			commit(conn);
-		else
-			rollback(conn);
-
 		close(conn);
 		
 		return result;

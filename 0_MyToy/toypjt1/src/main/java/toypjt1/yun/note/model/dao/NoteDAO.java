@@ -84,7 +84,6 @@ public class NoteDAO {
 				
 				note.setNoteNo(rs.getInt(1));
 				note.setNoteTitle(rs.getString(2));
-				//note.setNoteMemo(rs.getString(3));
 				note.setNoteDate(rs.getString(3));
 				
 				ntlist.add(note);
@@ -136,11 +135,15 @@ public class NoteDAO {
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(2, noteNo);
+			pstmt.setInt(1, noteNo);
 			
-			result = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
 			
 		} finally {
+			close(rs);
 			close(pstmt);
 		}
 		
