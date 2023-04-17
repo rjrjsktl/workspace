@@ -14,6 +14,7 @@
     <!-- <link rel="stylesheet" href="../css/index.css"> -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/index.css">
     
+    <link rel="icon" href="data:,">
 </head>
 <body>
 

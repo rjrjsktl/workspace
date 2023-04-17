@@ -62,6 +62,11 @@ public class NoteDAO {
 //		return ntlist;
 //	}
 
+	/** viewnote 단
+	 * @param conn
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Note> viewNote(Connection conn) throws Exception {
 
 		List<Note> ntlist = new ArrayList<>();
@@ -92,6 +97,13 @@ public class NoteDAO {
 		return ntlist;
 		}
 
+	/** dontBtn 버튼 누를 시
+	 * @param conn
+	 * @param noteTitle
+	 * @param noteMemo
+	 * @return
+	 * @throws Exception
+	 */
 	public int doneBtn(Connection conn, String noteTitle, String noteMemo) throws Exception{
 		int result = 0;
 		
@@ -108,6 +120,30 @@ public class NoteDAO {
 		} finally {
 			close(pstmt);
 		}
+		return result;
+	}
+
+	/** 메모 누를 시 create에 note 전달
+	 * @param conn
+	 * @param noteNo
+	 * @return
+	 */
+	public int passNote(Connection conn, int noteNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("passNote");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(2, noteNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
 		return result;
 	}
 

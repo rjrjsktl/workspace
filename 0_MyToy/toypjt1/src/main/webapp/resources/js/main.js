@@ -16,9 +16,14 @@ function viewNote() {
 
             for (let item of ntlist) {
                 // note 추가 div 추가
-                const addform = document.createElement("div");
+                const addform = document.createElement("form");
                 addform.classList.add("addform");
+                
+                addform.action="pass";
+                addform.method="POST";
 
+                const addinform = document.createElement("div");
+                addinform.classList.add("addinform");
                 // div에 내용 추가
                 const addtitle = document.createElement("div");
                 addtitle.classList.add("addtitle");
@@ -28,11 +33,13 @@ function viewNote() {
                 adddate.classList.add("adddate");
                 adddate.innerText = item.noteDate;
 
+                addinform.append(addtitle, adddate);
                 // div에 넣고싶은 div 2개 추가
-                addform.append(addtitle, adddate);
+                addform.append(addinform);
 
                 // addbox에 div 추가
                 addbox.append(addform);
+
             }
         },
         error: function(request) {
@@ -40,7 +47,9 @@ function viewNote() {
             console.log("상태코드 : " + request.status) // 404, 500
         }
     })
-}
+};
+
+
 
 (function () {
     console.log("start")
@@ -52,7 +61,7 @@ const nttitle = document.getElementById("nttitle");
 const ntmemo = document.getElementById("ntmemo");
 const donebtn = document.getElementById("donebtn");
 const removebtn = document.getElementById("removebtn");
-
+const nowtm = document.getElementById("nowtm");
 
 function clickDoneBtn() {
 
@@ -90,34 +99,17 @@ function clickDoneBtn() {
             console.log("상태코드 : " + request.status) // 404, 500
         }
     })
-}
+};
 
 function clickRemoveBtn() {
     window.alert("삭제 완료 했다옹");
 }
 
+// function passNote() {
+//     console.log("addform클릭");
+//     location.href="/toypjt1/note/pass";
 
-
-
-
-// donebtn.addEventListener("click", function noteValidate() {
-
-//     // 제목 입력 x
-//     if (nttitle.value.trim() === "") {
-//         window.alert("제목을 입력하라옹");
-
-//         nttitle.focus();
-//         return false;
-//     }
-//     // 제목 입력 o, 내용 압력 x
-//     if (nttext.value.trim() === "") {
-//         window.alert("내용이 없다옹");
-
-//         nttext.focus();
-//         return false;
-//     } else {
-//         window.alert("노트 저장을 완료했다옹");
-//     }
-//     return true;
-// });
-
+//     nttitle.value = "noteTitle";
+//     ntmemo.value = "noteMemo";
+//     nowtm.value = "noteDate";
+// }

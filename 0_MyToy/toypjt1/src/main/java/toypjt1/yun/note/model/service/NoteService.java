@@ -20,6 +20,10 @@ public class NoteService {
 //		return ntlist;
 //	}
 
+	/** viewnote 할때
+	 * @return
+	 * @throws Exception
+	 */
 	public List<Note> viewNote() throws Exception {
 
 		Connection conn = getConnection();
@@ -29,6 +33,12 @@ public class NoteService {
 		return ntlist;
 	}
 
+	/** doneBtn눌렀을경우
+	 * @param noteTitle
+	 * @param noteMemo
+	 * @return
+	 * @throws Exception
+	 */
 	public int doneBtn(String noteTitle, String noteMemo) throws Exception{
 		Connection conn = getConnection();
 		
@@ -39,6 +49,21 @@ public class NoteService {
 		else
 			rollback(conn);
 		close(conn);
+		return result;
+	}
+
+	public int passNote(int noteNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.passNote(conn, noteNo);
+		
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+
+		close(conn);
+		
 		return result;
 	}
 }

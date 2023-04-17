@@ -16,6 +16,12 @@
 		INSERT INTO NOTE VALUES
 		(SEQ_NOTE_NO.NEXTVAL, ?, ?, DEFAULT, DEFAULT)
 	</entry>
+	
+	<entry key="passNote">
+		SELECT NOTE_TITLE, NOTE_MEMO, ENROLL_DT
+		FROM NOTE
+		WHERE NOTE_NO = ?
+	</entry>
 
 
 </properties>

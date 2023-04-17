@@ -14,12 +14,11 @@
     <!-- <link rel="stylesheet" href="../css/note.css"> -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/note.css">
     
+    <link rel="icon" href="data:,">
 </head>
 <body>
 
     <!-- 이거는 맨 마지막에 해야함 왜냐면 움직이면서 추가 기능 필요 -->
-
-
 
     <div id="wrap">
         <div class="topwrap">
@@ -36,17 +35,17 @@
                     <input type="text" class="search" name="search" placeholder="Search" maxlength="30"
                             autocomplete="off" required>
                     <select name="sltsearch" class="sltsearch">
-                        <option value="edited">Sort by last Edited</option>
-                        <option value="created">Sort by recently created</option>
+                        <option value="edited">Sort by Last Edited</option>
+                        <option value="created">Sort by Recently created</option>
                         <option value="alphabetical">Sort by Alphabetical</option>
                     </select>
                 </div>
                     <!-- Note리스트 추가 되는 단 -->
                 <div class="bodybottom">
                     <div id="addbox">
-                        <div class="addform">
+                        <form class="addform">
                             No Result
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

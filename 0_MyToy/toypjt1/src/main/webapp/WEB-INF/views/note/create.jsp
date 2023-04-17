@@ -14,6 +14,7 @@
     <!-- <link rel="stylesheet" href="../css/create.css"> -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/create.css">
 
+    <link rel="icon" href="data:,">
 </head>
 <body>
 
@@ -31,13 +32,13 @@
                     <!-- back 버튼 등 기능 단 -->
                     <button type="button" id="backbtn" value="back"
                         onclick="window.history.back()">&lt;back</button>
-                    <span class="nowtm" id="nowtm">time</span>
+                    <span class="nowtm" id="nowtm" ontimeupdate="">time</span>
                 </div>
                     <!-- Note리스트 추가 되는 단 -->
                 <div class="bodybottom">
-                    <input type="text" id="nttitle" name="nttitle" placeholder="Note Title"
+                    <input type="text" id="nttitle" name="nttitle" value="${clickNote.noteTitle}" placeholder="Note Title"
                         maxlength="30" autocomplete="off">
-                    <textarea type="text" id="ntmemo" name="ntmemo" placeholder="Enter Note Text" maxlength="1000" autocomplete="off"></textarea>
+                    <textarea type="text" id="ntmemo" name="ntmemo" value="${clickNote.noteMemo}" placeholder="Enter Note Text" maxlength="1000" autocomplete="off"></textarea>
                 </div>
             </div>
         </div>
