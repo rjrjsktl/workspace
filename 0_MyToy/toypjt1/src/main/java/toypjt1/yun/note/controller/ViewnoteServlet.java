@@ -18,7 +18,7 @@ import toypjt1.yun.note.model.vo.Note;
 public class ViewnoteServlet extends HttpServlet{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
 			NoteService service = new NoteService();

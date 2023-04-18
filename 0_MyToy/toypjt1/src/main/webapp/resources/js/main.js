@@ -6,6 +6,7 @@ function viewNote() {
     console.log("viewnote");
     $.ajax({
         url: "viewnote",
+        type:"POST",
         dataType: "json",
 
         success: function(ntlist) {
@@ -127,11 +128,25 @@ function clickDoneBtn() {
         }
     })
 };
-
 function clickRemoveBtn() {
     window.alert("삭제 완료 했다옹");
-    location.href="/toypjt1/note/remove"; 
-}
+    console.log("removeServlet");
+    $.ajax({
+        url: "remove",
+        data: {"noteNo" : removebtn.value},
+        type: "POST",
+        dataType: "json",
+
+        success: function() {
+            console.log("AJAX 성공");
+            location.href="/toypjt1/note/note";
+        },
+        error: function(request) {
+            console.log("AJAX 에러 발생")
+            console.log("상태코드 : " + request.status) // 404, 500
+        }
+    })
+};
 
 
 // $(".addinform").on("click", passNote);

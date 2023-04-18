@@ -61,4 +61,17 @@ public class NoteService {
 		
 		return result;
 	}
+
+	public int removeNote(int noteNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.removeNote(conn, noteNo);
+
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
 }

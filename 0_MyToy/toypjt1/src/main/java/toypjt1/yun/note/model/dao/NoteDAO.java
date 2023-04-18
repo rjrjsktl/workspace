@@ -144,6 +144,7 @@ public class NoteDAO {
 				note.setNoteMemo(rs.getString(2));
 				note.setNoteDate(rs.getString(3));
 				note.setNoteNo(rs.getInt(4));
+				note.setNoteSession(rs.getString(5));
 				
 			}
 		} finally {
@@ -151,5 +152,27 @@ public class NoteDAO {
 			close(pstmt);
 		}
 		return note;
+	}
+
+	/** remove 버튼 누를시
+	 * @param conn
+	 * @param noteNo
+	 * @return
+	 * @throws Exception
+	 */
+	public int removeNote(Connection conn, int noteNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("removeNote");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noteNo);
+			
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }

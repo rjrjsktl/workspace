@@ -33,8 +33,6 @@ public class PassNoteServlet extends HttpServlet{
 //		System.out.println(req.getParameter("noteMemo"));
 //		System.out.println(req.getParameter("noteDate"));
 		System.out.println(req.getParameter("noteNo"));
-		
-		
 		HttpSession session = req.getSession();
 		//Note clickNote = new Note();
 		/*
@@ -42,10 +40,8 @@ public class PassNoteServlet extends HttpServlet{
 		 * 
 		 * 이게 필요가 없고
 		 */
-		
 //		int noteNo = clickNote.getNoteNo();
 		int noteNo = 0;
-		
 		noteNo = Integer.valueOf(req.getParameter("noteNo"));
 //		System.out.println(noteNo);
 		/*
@@ -60,14 +56,14 @@ public class PassNoteServlet extends HttpServlet{
 				
 			session.setAttribute("clickNote", clickNote);
 			System.out.println(clickNote);
-			System.out.println("pass가즈아");
 			
-			resp.sendRedirect("pass");
+			
+			
 			// 이건 맞는거같은데 
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-//		session.removeAttribute("clickNote");
+		System.out.println("pass가즈아");
+		resp.sendRedirect("pass");
 	}
 }

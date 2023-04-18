@@ -18,14 +18,25 @@
 	</entry>
 	
 	<entry key="passNote">
-		SELECT NOTE_TITLE, NOTE_MEMO, ENROLL_DT, NOTE_NO
+		SELECT NOTE_TITLE, NOTE_MEMO, ENROLL_DT, NOTE_NO, SECESSION_EX
 		FROM NOTE
 		WHERE NOTE_NO = ?
 		AND SECESSION_EX = 'N'
 	</entry>
 	
 	<entry key="removeNote">
-		UPDATE
+		UPDATE NOTE SET
+		SECESSION_EX = 'Y'
+		WHERE NOTE_NO = ?
+	</entry>
+	
+	<entry key="UpdateNote">
+		UPDATE NOTE SET
+		NOTE_TITLE = ?,
+		NOTE_MEMO = ?,
+		--시간 어떻게 해야하나 확인 필요!
+		WHERE
+		NOTE_NO = ?
 	</entry>
 
 
