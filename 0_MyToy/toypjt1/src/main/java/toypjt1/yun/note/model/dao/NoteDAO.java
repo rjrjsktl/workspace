@@ -127,8 +127,8 @@ public class NoteDAO {
 	 * @param noteNo
 	 * @return
 	 */
-	public int passNote(Connection conn, int noteNo) throws Exception {
-		int result = 0;
+	public Note passNote(Connection conn, int noteNo) throws Exception {
+		Note note = new Note();
 		
 		try {
 			String sql = prop.getProperty("passNote");
@@ -138,16 +138,18 @@ public class NoteDAO {
 			pstmt.setInt(1, noteNo);
 			
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				result = rs.getInt(1);
-			}
 			
+			while (rs.next()) {
+				note.setNoteTitle(rs.getString(1));
+				note.setNoteMemo(rs.getString(2));
+				note.setNoteDate(rs.getString(3));
+				note.setNoteNo(rs.getInt(4));
+				
+			}
 		} finally {
 			close(rs);
 			close(pstmt);
 		}
-		
-		return result;
+		return note;
 	}
-
 }

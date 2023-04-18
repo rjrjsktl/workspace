@@ -18,9 +18,14 @@
 	</entry>
 	
 	<entry key="passNote">
-		SELECT NOTE_TITLE, NOTE_MEMO, ENROLL_DT
+		SELECT NOTE_TITLE, NOTE_MEMO, ENROLL_DT, NOTE_NO
 		FROM NOTE
 		WHERE NOTE_NO = ?
+		AND SECESSION_EX = 'N'
+	</entry>
+	
+	<entry key="removeNote">
+		UPDATE
 	</entry>
 
 

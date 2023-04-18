@@ -52,10 +52,10 @@ public class NoteService {
 		return result;
 	}
 
-	public int passNote(int noteNo) throws Exception {
+	public Note passNote(int noteNo) throws Exception {
 		Connection conn = getConnection();
 		
-		int result = dao.passNote(conn, noteNo);
+		Note result = dao.passNote(conn, noteNo);
 		
 		close(conn);
 		

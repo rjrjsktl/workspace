@@ -17,41 +17,53 @@ public class PassNoteServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		System.out.println("path로 싸줌");
 		String path = "/WEB-INF/views/note/update.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String noteTitle = req.getParameter("noteTitle");
-		String noteMemo = req.getParameter("noteMemo");
-		String noteDate = req.getParameter("noteDate");
+//		String noteTitle = req.getParameter("noteTitle");
+//		String noteMemo = req.getParameter("noteMemo");
+//		String noteDate = req.getParameter("noteDate");
+		
+//		System.out.println("윤석이 바보");
+//		System.out.println(req.getParameter("noteTitle"));
+//		System.out.println(req.getParameter("noteMemo"));
+//		System.out.println(req.getParameter("noteDate"));
+		System.out.println(req.getParameter("noteNo"));
+		
 		
 		HttpSession session = req.getSession();
+		//Note clickNote = new Note();
+		/*
+		 * >>
+		 * 
+		 * 이게 필요가 없고
+		 */
 		
-		Note clickNote = (Note)session.getAttribute("clickNote");
 //		int noteNo = clickNote.getNoteNo();
 		int noteNo = 0;
 		
-		if (clickNote != null) {
-		    noteNo = clickNote.getNoteNo();
-		    // noteNo 값을 사용하는 코드
-		} else {
-		    // clickNote가 null인 경우에 대한 처리
-		}
+		noteNo = Integer.valueOf(req.getParameter("noteNo"));
+//		System.out.println(noteNo);
+		/*
+		 * if (clickNote != null) { noteNo = clickNote.getNoteNo(); // noteNo 값을 사용하는 코드
+		 * } else { // clickNote가 null인 경우에 대한 처리 // 니 코드는 지금 여기를 타고있음 }
+		 */
 	
 		try {
 			NoteService service = new NoteService();
 			
-			int result = service.passNote(noteNo);
-			
-			if(result > 0) {
-				clickNote.setNoteTitle(noteTitle);
-				clickNote.setNoteMemo(noteMemo);
-				clickNote.setNoteDate(noteDate);
+			Note clickNote = service.passNote(noteNo);
 				
-				session.setAttribute("clickNote", clickNote);
-			}
-			resp.sendRedirect("create");
+			session.setAttribute("clickNote", clickNote);
+			System.out.println(clickNote);
+			System.out.println("pass가즈아");
+			
+			resp.sendRedirect("pass");
+			// 이건 맞는거같은데 
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
