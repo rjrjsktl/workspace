@@ -24,7 +24,6 @@ public class RemoveServlet extends HttpServlet{
 		System.out.println("path로 싸줌");
 		String path = "/WEB-INF/views/note/note.jsp";
 		req.getRequestDispatcher(path).forward(req, resp);
-		System.out.println("note페이지로 이동???뭔데");
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

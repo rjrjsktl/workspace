@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 			
 			const newTaskWrapper = document.createElement('div');
+			
 			$.ajax({
 				url: "todo",
 				type: "post",

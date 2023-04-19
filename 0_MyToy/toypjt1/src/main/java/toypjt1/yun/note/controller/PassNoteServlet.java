@@ -32,6 +32,7 @@ public class PassNoteServlet extends HttpServlet{
 //		System.out.println(req.getParameter("noteTitle"));
 //		System.out.println(req.getParameter("noteMemo"));
 //		System.out.println(req.getParameter("noteDate"));
+		System.out.println("연결확인");
 		System.out.println(req.getParameter("noteNo"));
 		HttpSession session = req.getSession();
 		//Note clickNote = new Note();

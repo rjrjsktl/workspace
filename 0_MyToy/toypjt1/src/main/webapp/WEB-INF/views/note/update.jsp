@@ -47,7 +47,7 @@
                 <!--remove note 버튼 아마 onclick 바꿔야 할거임-->
                 <button type="button" id="removebtn" name="noteNo" value="${clickNote.noteNo}" onclick="clickRemoveBtn()">Remove</button>
                 <!-- done 버튼 -->
-                <button type="button" id="updatebtn" onclick="clickUpdateBtn()">Update</button>
+                <button type="button" id="updatebtn" name="noteNo" value="${clickNote.noteNo}" onclick="clickUpdateBtn()">Update</button>
             </div>
         </div>
     </div>

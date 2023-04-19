@@ -32,7 +32,7 @@
             <div class="bodycontainer"> <!-- 글씨 나오는 싸이즈(create에선 가운데 틀) -->
                 <div class="bodytop">
                     <!-- back 버튼 등 기능 단 -->
-                    <input type="text" class="search" name="search" placeholder="Search" maxlength="30"
+                    <input type="text" id="search" class="search" name="search" placeholder="Search" maxlength="30"
                             autocomplete="off" required>
                     <select name="sltsearch" class="sltsearch">
                         <option value="edited">Sort by Last Edited</option>

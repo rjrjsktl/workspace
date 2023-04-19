@@ -74,4 +74,17 @@ public class NoteService {
 		close(conn);
 		return result;
 	}
+
+	public int updateNote(String noteTitle, String noteMemo, int noteNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.updateNote(conn, noteTitle, noteMemo, noteNo);
+
+		if (result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+		close(conn);
+		return result;
+	}
 }

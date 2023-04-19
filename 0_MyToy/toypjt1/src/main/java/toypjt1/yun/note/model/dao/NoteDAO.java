@@ -175,4 +175,23 @@ public class NoteDAO {
 		}
 		return result;
 	}
+
+	public int updateNote(Connection conn, String noteTitle, String noteMemo, int noteNo) throws Exception {
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("updateNote");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, noteTitle);
+			pstmt.setString(2, noteMemo);
+			pstmt.setInt(3, noteNo);
+			
+			result = pstmt.executeUpdate();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 }
