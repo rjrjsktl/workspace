@@ -52,6 +52,18 @@ public class NoteService {
 		return result;
 	}
 
+//	public List<Note> passNote(int noteNo) throws Exception {
+//		Connection conn = getConnection();
+//		
+//		List<Note> note = null;
+//		
+//		try {
+//			note = dao.passNote(conn, noteNo);
+//		} finally {
+//			close(conn);
+//		}
+//		return note;
+//	}
 	public Note passNote(int noteNo) throws Exception {
 		Connection conn = getConnection();
 		
@@ -60,7 +72,9 @@ public class NoteService {
 		close(conn);
 		
 		return result;
-	}
+	} //------------------ 영식이가 알려준 방법
+	
+	
 
 	public int removeNote(int noteNo) throws Exception {
 		Connection conn = getConnection();
@@ -86,5 +100,28 @@ public class NoteService {
 			rollback(conn);
 		close(conn);
 		return result;
+	}
+
+//	public List<Note> searchNote(String searchValue) throws Exception{
+//		Connection conn = getConnection();
+//		List<Note> note = null;
+//
+//		try {
+//			note = dao.searchNote(conn, searchValue);
+//		} finally {
+//			close(conn);
+//		}
+//		return note;
+//	}
+	public List<Note> searchNote(String searchValue) throws Exception {
+		Connection conn = getConnection();
+		System.out.println("service는?");
+		List<Note> searchNotelist = null;
+		
+		searchNotelist = dao.searchNote(conn, searchValue);
+		
+		close(conn);
+		
+		return searchNotelist;
 	}
 }

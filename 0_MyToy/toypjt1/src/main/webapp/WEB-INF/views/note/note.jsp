@@ -43,7 +43,7 @@
                     <!-- Note리스트 추가 되는 단 -->
                 <div class="bodybottom">
                     <div id="addbox">
-                        <form class="addform">
+                        <form  class="addform">
                             <div class="addinform">
                                 No Result
                             </div>

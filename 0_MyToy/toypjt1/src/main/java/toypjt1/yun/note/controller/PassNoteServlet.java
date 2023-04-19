@@ -1,6 +1,7 @@
 package toypjt1.yun.note.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,8 +54,8 @@ public class PassNoteServlet extends HttpServlet{
 		try {
 			NoteService service = new NoteService();
 			
-			Note clickNote = service.passNote(noteNo);
-				
+//			List<Note> clickNote = service.passNote(noteNo);
+			Note clickNote = service.passNote(noteNo); //---- 영식이가 쓴 방법(더 짧긴한듯)
 			session.setAttribute("clickNote", clickNote);
 			System.out.println(clickNote);
 			

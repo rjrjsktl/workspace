@@ -128,9 +128,10 @@ public class NoteDAO {
 	 * @return
 	 */
 	public Note passNote(Connection conn, int noteNo) throws Exception {
-		Note note = new Note();
-		
+//		List<Note> passNote = new ArrayList<>();
+		Note note = new Note(); // 영식이방법
 		try {
+//			Note note = null;
 			String sql = prop.getProperty("passNote");
 			
 			pstmt = conn.prepareStatement(sql);
@@ -140,6 +141,8 @@ public class NoteDAO {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
+//				note = new Note();
+				
 				note.setNoteTitle(rs.getString(1));
 				note.setNoteMemo(rs.getString(2));
 				note.setNoteDate(rs.getString(3));
@@ -193,5 +196,33 @@ public class NoteDAO {
 			close(pstmt);
 		}
 		return result;
+	}
+
+	public List<Note> searchNote(Connection conn, String searchValue) throws Exception {
+		List<Note> searchNotelist = new ArrayList<>();
+		System.out.println("dao는?");
+		try {
+			String sql = prop.getProperty("search");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, "%"+searchValue+"%");
+			
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Note note = new Note();
+				
+				note.setNoteTitle(rs.getString("NOTE_TITLE"));
+				note.setNoteMemo(rs.getString("NOTE_MEMO"));
+				note.setNoteDate(rs.getString("ENROLL_DT"));
+				note.setNoteNo(rs.getInt("NOTE_NO"));
+				note.setNoteSession(rs.getString("SECESSION_EX"));
+				searchNotelist.add(note);
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return searchNotelist;
 	}
 }

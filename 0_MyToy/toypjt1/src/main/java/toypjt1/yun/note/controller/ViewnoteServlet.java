@@ -23,7 +23,7 @@ public class ViewnoteServlet extends HttpServlet{
 		try {
 			NoteService service = new NoteService();
 			List<Note> ntlist = service.viewNote();
-			
+			System.out.println(ntlist);
 			new Gson().toJson(ntlist, resp.getWriter());
 		} catch (Exception e) {
 			e.printStackTrace();

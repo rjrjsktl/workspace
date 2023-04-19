@@ -63,7 +63,85 @@ function viewNote() {
         }
     })
 };
+const search = document.getElementById("search");
 
+search.addEventListener("input", searchNote);
+
+function searchNote() {
+    const searchValue = search.value;
+    $.ajax({
+        url: "search",
+        type: "POST",
+        data: {
+                "searchValue": searchValue
+                },
+        dataType: "json",
+
+        success: function(searchNote) {
+            console.log("AJAX 성공");
+            inputNoteTitle(searchNote);
+        },
+        error: function(request) {
+            console.log("AJAX 에러 발생")
+            console.log("상태코드 : " + request.status) // 404, 500
+        }
+    })
+};
+function inputNoteTitle(searchNotelist) {
+    addbox.innerHTML = "";
+    if (searchNotelist.length === 0) {
+	const noresultform = document.createElement("form");
+	noresultform.id="0";
+	
+	const noresultinform = document.createElement("div");
+    noresultinform.classList.add("addinform");
+    noresultinform.innerText = "No Result";
+    
+    noresultform.append(noresultinform);
+	addbox.append(noresultform);
+	
+	return;
+	}
+    
+    for (let item of searchNotelist) {
+      const addform = document.createElement("form");
+      addform.id = item.noteNo;
+      addform.classList.add("addform");
+      addform.action = "pass";
+      addform.method = "POST";
+  
+      const addinform = document.createElement("div");
+      addinform.classList.add("addinform");
+  
+      const addtitle = document.createElement("div");
+      addtitle.classList.add("addtitle");
+      addtitle.innerText = item.noteTitle;
+  
+      const adddate = document.createElement("div");
+      adddate.classList.add("adddate");
+      adddate.innerText = item.noteDate;
+  
+      const addno = document.createElement("input");
+      addno.classList.add("addno");
+      addno.type = "hidden";
+      addno.name = "noteNo";
+      addno.value = item.noteNo;
+  
+      addinform.append(addtitle, adddate, addno);
+      addform.append(addinform);
+      addbox.append(addform);
+  
+      // 검색어와 일치하지 않는 노트는 화면에서 숨깁니다.
+      if (!item.noteTitle.includes(search.value)) {
+        addform.style.display = "none";
+      }
+    }
+    $('.addform').off().on('click', function(){
+		console.log('test');
+		console.log($(this).attr('id'));
+		passNote($(this).attr('id'));
+	})
+};
 function passNote(num) {
     console.log("addform클릭");
     console.log(num);
@@ -177,32 +255,8 @@ function clickUpdateBtn() {
     })
 };
 
-const search = document.getElementById("search");
 
-search.addEventListener("input", searchNote);
-
-function searchNote() {
-    const searchValue = search.value;
-    $.ajax({
-        url: "search",
-        type: "POST",
-        data: {
-                "searchValue": searchValue
-                },
-        dataType: "json",
-
-        success: function() {
-
-        },
-        error: function(request) {
-            console.log("AJAX 에러 발생")
-            console.log("상태코드 : " + request.status) // 404, 500
-
-
-        }
-    })
-};
-
+  
 
 
 /* 피티형의 도움
@@ -212,6 +266,10 @@ function searchNote() {
 
 const searchField = document.getElementById("search");
 searchField.addEventListener("input", searchNote);
+---------------------------------------
+const search = document.getElementById("search");
+
+search.addEventListener("input", searchNote);
 
 2. 검색어 입력 이벤트가 발생할 때마다 서버로 검색어를 전송하고, 해당하는 노트 목록을 받아옵니다.
 

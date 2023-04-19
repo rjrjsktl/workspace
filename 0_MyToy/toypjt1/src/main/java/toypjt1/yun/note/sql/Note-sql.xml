@@ -38,6 +38,14 @@
 		WHERE
 		NOTE_NO = ?
 	</entry>
+	
+	<entry key="search">
+		SELECT *
+		FROM NOTE
+		WHERE NOTE_TITLE
+		LIKE ?
+		AND SECESSION_EX = 'N'
+	</entry>
 
 
 </properties>
